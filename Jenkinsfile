@@ -3,10 +3,6 @@ pipeline{
         jdk 'myjava'
         maven 'mymaven'
     }
-    
-    parameters{
-        string(name: 'repoName', defaultValue: 'https://github.com/Sonal0409/DevOpsCodeDemo.git',description: 'Enter repo path'  )
-    }
     agent any
     
     stages{
