@@ -3,8 +3,9 @@ pipeline{
         jdk 'myjava'
         maven 'mymaven'
     }
+    
     parameters{
-        string(name:'repoName',defaultValue:'https://github.com/Sonal0409/DevOpsCodeDemo.git',description:'enter repo name')
+        string(name: 'repoName', defaultValue: 'https://github.com/Sonal0409/DevOpsCodeDemo.git',description: 'Enter repo path'  )
     }
     agent any
     
@@ -19,10 +20,9 @@ pipeline{
         {
             steps{
                 sh 'mvn compile'
-                
             }
         }
-        stage('Review the code')
+         stage('Review the code')
         {
             steps{
                 sh 'mvn pmd:pmd'
@@ -31,7 +31,7 @@ pipeline{
         stage('Testing')
         {
             steps{
-                sh 'mvn test' 
+               sh 'mvn test'
             }
             post{
                 success{
@@ -39,7 +39,7 @@ pipeline{
                 }
             }
         }
-        stage('Package')
+        stage ('Package')
         {
             steps{
                 sh 'mvn package'
